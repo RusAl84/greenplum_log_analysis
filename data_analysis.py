@@ -9,6 +9,7 @@ def read_file_to_df(file_name="log_week_end.csv"):
     df = df.sort_values(by='rn', ascending=True)
     return df
 
+
 def save_to_pickle():
     df = read_file_to_df("log_week_end.csv")
     # print(df.columns)
@@ -22,6 +23,7 @@ def save_to_pickle():
     with open('hot_tables.pickle', 'wb') as handle:
         pickle.dump(hot_tables, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+
 def read_pickle():
     with open('df.pickle', 'rb') as handle:
         df = pickle.load(handle)
@@ -32,7 +34,15 @@ def read_pickle():
 
     return (df, data, hot_tables)
 
-if __name__ == '__main__':
-    save_to_pickle()
-    (df, data, hot_tables) = read_pickle()
 
+if __name__ == '__main__':
+    # save_to_pickle()
+    (df, data, hot_tables) = read_pickle()
+    # print(hot_tables)
+    import numpy as np
+    import matplotlib.pyplot as plt
+    for tables in hot_tables:
+        x=tables[0]
+        y=tables[1]
+    fig, ax = plt.subplots()
+    ax.bar(x, y)
