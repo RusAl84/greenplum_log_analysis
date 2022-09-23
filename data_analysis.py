@@ -41,8 +41,15 @@ if __name__ == '__main__':
     # print(hot_tables)
     import numpy as np
     import matplotlib.pyplot as plt
-    for tables in hot_tables:
-        x=tables[0]
-        y=tables[1]
+
+    x, y = [], []
+    for tables in hot_tables[-10:-1]:
+        x.append(tables[0])
+        y.append(tables[1])
     fig, ax = plt.subplots()
     ax.bar(x, y)
+    ax.set_facecolor('seashell')
+    fig.set_facecolor('floralwhite')
+    fig.set_figwidth(12)  # ширина Figure
+    fig.set_figheight(6)  # высота Figure
+    plt.show()
